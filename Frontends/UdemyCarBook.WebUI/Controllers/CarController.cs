@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using UdemyCarBook.Dto.CarDtos;
+using UdemyCarBook.Dto.CarPricingDtos;
 
 namespace UdemyCarBook.WebUI.Controllers
 {
@@ -20,11 +22,19 @@ namespace UdemyCarBook.WebUI.Controllers
 			ViewBag.v2 = "Aracınızı Seçiniz";
 
 			var client=_httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync("https://localhost:7095/api/Cars/GetCarWithBrand");
+			var responseMessage = await client.GetAsync("https://localhost:7095/api/CarPricings");
 			if(responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData=await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultCarWithBrandsDto>>(jsonData);
+				//Yeni Ekledim
+				//if (jsonData.TrimStart().StartsWith("{"))
+				//{
+				//	var jsonObject = JObject.Parse(jsonData);
+				//	jsonData = jsonObject["result"]?.ToString();
+				//}
+				////yeni ekledim
+
+				var values = JsonConvert.DeserializeObject<List<ResultCarPricingWithCarsDto>>(jsonData);
 				return View(values);
 			}
 			return View();
