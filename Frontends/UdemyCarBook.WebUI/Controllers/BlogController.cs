@@ -20,10 +20,10 @@ namespace UdemyCarBook.WebUI.Controllers
 
 			var client = _httpClientFactory.CreateClient();
 			var responseMessage = await client.GetAsync("https://localhost:7095/api/Blogs/GetAllBlogsWithAuthorsList");
-			if (responseMessage.IsSuccessStatusCode) 
+			if (responseMessage.IsSuccessStatusCode)
 			{
-				var jsonData= await responseMessage.Content.ReadAsStringAsync();
-				var values=JsonConvert.DeserializeObject<List<ResultAllBlogsWithAuthorsDto>>(jsonData);
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var values = JsonConvert.DeserializeObject<List<ResultAllBlogsWithAuthorsDto>>(jsonData);
 				return View(values);
 			}
 			return View();
@@ -33,7 +33,7 @@ namespace UdemyCarBook.WebUI.Controllers
 		{
 			ViewBag.v1 = "Bloglar";
 			ViewBag.v2 = "Blog Detayı ve Yorumlar";
-
+			ViewBag.blogid = id;
 
 			return View();
 		}
