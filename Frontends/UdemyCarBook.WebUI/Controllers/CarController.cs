@@ -26,14 +26,6 @@ namespace UdemyCarBook.WebUI.Controllers
 			if(responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData=await responseMessage.Content.ReadAsStringAsync();
-				//Yeni Ekledim
-				//if (jsonData.TrimStart().StartsWith("{"))
-				//{
-				//	var jsonObject = JObject.Parse(jsonData);
-				//	jsonData = jsonObject["result"]?.ToString();
-				//}
-				////yeni ekledim
-
 				var values = JsonConvert.DeserializeObject<List<ResultCarPricingWithCarsDto>>(jsonData);
 				return View(values);
 			}
