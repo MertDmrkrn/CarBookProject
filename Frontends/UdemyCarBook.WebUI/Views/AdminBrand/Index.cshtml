@@ -1,4 +1,4 @@
-﻿@model List<ResultFeatureDto>
+﻿@model List<ResultBrandDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,18 +14,19 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Araba Özellikleri Listesi</h4>
+                        <h4 class="card-title">Araba Marka Listesi</h4>
                         <p class="card-subtitle mb-4">
-                            Arabalarla ilgili yeni özellik ekleme ,(Klima, Bluetooth, Audio, Elektrik vs.) özellikler listesi, özellikler üzerinde düzenleme ve bir özelliği kaldırma işlemini buradan gerçekleştirebilirsiniz. Temada veri tutarlılığını sağlayabilmek için lütfen 3'ün katı şeklinde veri girişi yapınız.
+                            Arabalarla ilgili yeni marka ekleme, marka listesi, marka üzerinde düzenleme ve bir markayı kaldırma işlemini buradan gerçekleştirebilirsiniz.
                         </p>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Özellik</th>
+                                        <th>Marka</th>
                                         <th>Sil</th>
                                         <th>Güncelle</th>
+                                        <th>Markaya Ait Araçlar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,14 +35,15 @@
                                         count++;
                                         <tr>
                                             <th scope="row">@count</th>
-                                            <td>@item.FeatureName</td>
-                                            <td><a href="/AdminFeature/DeleteFeature/@item.FeatureID" class="btn btn-outline-danger">Sil</a></td>
-                                            <td><a href="/AdminFeature/UpdateFeature/@item.FeatureID" class="btn btn-outline-success">Güncelle</a></td>
+                                            <td>@item.brandName</td>
+                                            <td><a href="/AdminBrand/DeleteBrand/@item.brandID" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/AdminBrand/UpdateBrand/@item.brandID" class="btn btn-outline-success">Güncelle</a></td>
+                                            <td><a href="/AdminBrand/UpdateBrand/@item.brandID" class="btn btn-outline-dark">Markaya Ait Araçlar</a></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <a href="/AdminFeature/CreateFeature/" class="btn btn-outline-primary">Yeni Özellik Girişi</a>
+                            <a href="/AdminBrand/CreateBrand/" class="btn btn-outline-primary">Yeni Marka Girişi</a>
                         </div>
 
                     </div>
