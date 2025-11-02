@@ -38,7 +38,7 @@ namespace CarBookProject.WebApi.Controllers
 			return Ok("Alt Adres Eklendi.");
 		}
 
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public async Task<IActionResult> RemoveFooterAddress(int id)
 		{
 			await _mediator.Send(new RemoveFooterAddressCommand(id));
