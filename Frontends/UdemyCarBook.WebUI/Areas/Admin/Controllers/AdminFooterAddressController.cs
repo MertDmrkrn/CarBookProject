@@ -92,7 +92,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 			var responseMessage = await client.PutAsync("https://localhost:7095/api/FooterAddresses", content);
 			if (responseMessage.IsSuccessStatusCode)
 			{
-				return RedirectToAction("Index", "AdminFooterAddres", new { area = "Admin" });
+				return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
 			}
 			return View();
 		}
