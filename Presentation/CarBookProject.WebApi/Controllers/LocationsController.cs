@@ -38,7 +38,7 @@ namespace CarBookProject.WebApi.Controllers
 			return Ok("Konum Eklendi.");
 		}
 
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public async Task<IActionResult> RemoveLocation(int id)
 		{
 			await _mediator.Send(new RemoveLocationCommand(id));
