@@ -13,5 +13,6 @@ namespace CarBookProject.Application.Interfaces.CarInterfaces
 
 		List<Car> GetLast5CarsWithBrand();
 
+		int GetCarCount();
 	}
 }
