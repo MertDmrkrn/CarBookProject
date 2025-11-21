@@ -1,4 +1,5 @@
 ﻿using CarBookProject.Application.Features.Mediator.Results.LocationResult;
+using CarBookProject.Application.Features.Mediator.Results.StatisticsResult;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarBookProject.Application.Features.Mediator.Queries.StatisticsQuery
 {
-	public class GetLocationCountQuery : IRequest<GetLocationQueryResult>
+	public class GetLocationCountQuery : IRequest<GetLocationCountQueryResult>
 	{
 	}
 }

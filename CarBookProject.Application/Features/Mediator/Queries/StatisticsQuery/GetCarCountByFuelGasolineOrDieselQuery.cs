@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarBookProject.Application.Features.Mediator.Queries.StatisticsQuery
 {
-	internal class GetCarCountByFuelGasolineOrDieselQuery : IRequest<GetCarCountByFuelGasolineOrDieselQueryResult>
+	public class GetCarCountByFuelGasolineOrDieselQuery : IRequest<GetCarCountByFuelGasolineOrDieselQueryResult>
 	{
 	}
 }
