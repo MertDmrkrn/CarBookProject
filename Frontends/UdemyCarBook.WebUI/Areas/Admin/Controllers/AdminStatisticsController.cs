@@ -140,6 +140,46 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 				ViewBag.carCountByFuelElectric = values12.carCountByFuelElectric;
 			}
 			#endregion
+
+			#region İstatistik13
+			var responseMessage13 = await client.GetAsync("https://localhost:7095/api/Statistics/GetCarBrandAndModelByRentPriceDailyMax");
+			if (responseMessage13.IsSuccessStatusCode)
+			{
+				var jsonData13=await responseMessage13.Content.ReadAsStringAsync();
+				var values13=JsonConvert.DeserializeObject<ResultStatisticsDto> (jsonData13);
+				ViewBag.carBrandAndModelByRentPriceDailyMax = values13.carBrandAndModelByRentPriceDailyMax;
+			}
+			#endregion
+
+			#region İstatistik14
+			var responseMessage14 = await client.GetAsync("https://localhost:7095/api/Statistics/GetCarBrandAndModelByRentPriceDailyMin");
+			if (responseMessage14.IsSuccessStatusCode) 
+			{
+				var jsonData14=await responseMessage14.Content.ReadAsStringAsync();
+				var values14 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData14);
+				ViewBag.carBrandAndModelByRentPriceDailyMin = values14.carBrandAndModelByRentPriceDailyMin;
+			}
+			#endregion
+
+			#region İstatistik15
+			var responseMessage15 = await client.GetAsync("https://localhost:7095/api/Statistics/GetBrandNameByMaxCar");
+			if (responseMessage15.IsSuccessStatusCode) 
+			{
+				var jsonData15=await responseMessage15.Content.ReadAsStringAsync();
+				var values15 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData15);
+				ViewBag.brandNameByMaxCar = values15.brandNameByMaxCar;
+			}
+			#endregion
+
+			#region İstatistik16
+			var responseMessage16 = await client.GetAsync("https://localhost:7095/api/Statistics/GetBlogTitleByMaxBlogComment");
+			if (responseMessage16.IsSuccessStatusCode) 
+			{
+				var jsonData16=await responseMessage16.Content.ReadAsStringAsync();
+				var values16 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData16);
+				ViewBag.blogTitleByMaxBlogComment = values16.blogTitleByMaxBlogComment;
+			}
+			#endregion
 			return View();
 		}
 	}
