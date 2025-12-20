@@ -38,5 +38,7 @@ namespace CarBook.Domain.Entities
 
         public List<RentACar> RentACars { get; set; }
 
-    }
+		public List<RentACarProcess> RentACarProcesses { get; set; }
+
+	}
 }
