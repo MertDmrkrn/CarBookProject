@@ -1,0 +1,68 @@
+﻿@model CreateReservationDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<section class="ftco-section contact-section">
+    <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          
+            <div class="col-md-4">
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <div class="border w-100 p-4 rounded mb-2 text-center">
+                            <p><span>REZERVASYON</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="border w-100 p-3 rounded mb-2 d-flex">
+                            <img src="/carbook/images/bg_3.jpg" class="img-fluid rounded" style="border-radius: 20px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 block-9 mb-md-5">
+                <form  class="bg-light p-5 contact-form" method="post">
+                    
+                    <div class="form-group">
+                        <input type="hidden" asp-for="CarID" value="@ViewBag.v3" class="form-control" placeholder="Almak İstediğiniz Araba Modeli">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Name" class="form-control" placeholder="Adınız">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Surname" class="form-control" placeholder="Soyadınız">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Mail" class="form-control" placeholder="Mail Adresiniz">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Phone" class="form-control" placeholder="Telefon Numaranız">
+                    </div>
+                    <div class="form-group">
+                        <label>Alınmak İstenen Lokasyon</label>
+                        @Html.DropDownListFor(x => x.PickUpLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>İade Edilecek Lokasyon</label>
+                        @Html.DropDownListFor(x => x.DropOffLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Age" class="form-control" placeholder="Yaşınız">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="DriverLicenseYear" class="form-control" placeholder="Ehliyet Yılınız">
+                    </div>
+                    <div class="form-group">
+                        <textarea  id="" asp-for="Description" cols="30" rows="7" class="form-control" placeholder="Varsa Eklemek İstedikleriniz..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Rezervasyonu Tamamla" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

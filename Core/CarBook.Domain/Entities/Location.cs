@@ -13,5 +13,9 @@ namespace CarBook.Domain.Entities
         public string LocationName { get; set; }
 
 		public List<RentACar> RentACars { get; set; }
+
+		public List<Reservation> PickUpReservation { get; set; }//Bir Tablo üzerinde birden fazla ID ile ilişki kurduk
+
+		public List<Reservation> DropOffReservation { get; set; }
 	}
 }
