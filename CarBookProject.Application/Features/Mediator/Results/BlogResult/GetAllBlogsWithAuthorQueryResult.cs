@@ -21,7 +21,7 @@ namespace CarBookProject.Application.Features.Mediator.Results.BlogResult
 
 		public string CategoryName { get; set; }
 
-		public int AuthorID { get; set; }
+		public int AuthorID { get; set; } 
 
 		public string CoverImgURL { get; set; }
 
