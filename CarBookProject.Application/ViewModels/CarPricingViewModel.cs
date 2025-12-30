@@ -16,5 +16,8 @@ namespace CarBookProject.Application.ViewModels
 		public string Model { get; set; }
 
 		public List<Decimal> Amounts { get; set; }
+
+		public string CoverImgUrl { get; set; }
+
 	}
 }

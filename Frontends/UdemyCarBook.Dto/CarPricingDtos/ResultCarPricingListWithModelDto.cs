@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookProject.Application.Features.Mediator.Results.CarPricingResult
+namespace UdemyCarBook.Dto.CarPricingDtos
 {
-	public class GetCarPricingWithTimePeriodQueryResult
+	public class ResultCarPricingListWithModelDto
 	{
 		public string Model { get; set; }
 
 		public decimal DailyAmount { get; set; }
 
 		public decimal WeeklyAmount { get; set; }
-
+		
 		public decimal MonthlyAmount { get; set; }
 
 		public string CoverImgUrl { get; set; }
-
 	}
 }
