@@ -17,5 +17,7 @@ namespace UdemyCarBook.Dto.CarPricingDtos
 		public decimal MonthlyAmount { get; set; }
 
 		public string CoverImgUrl { get; set; }
+
+		public string Brand { get; set; }
 	}
 }

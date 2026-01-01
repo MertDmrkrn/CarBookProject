@@ -19,5 +19,7 @@ namespace CarBookProject.Application.ViewModels
 
 		public string CoverImgUrl { get; set; }
 
+		public string Brand { get; set; }
+
 	}
 }

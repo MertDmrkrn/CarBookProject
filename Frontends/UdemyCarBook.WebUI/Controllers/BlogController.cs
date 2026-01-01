@@ -49,39 +49,19 @@ namespace UdemyCarBook.WebUI.Controllers
 
 
 		[HttpGet]
-		public PartialViewResult AddComment()
+		public PartialViewResult AddComment(int id)
 		{
+			ViewBag.blogid = id;
 			return PartialView();
 		}
 
-		//[HttpPost]
-		//public async Task<IActionResult> AddComment(CreateCommentDto dto)
-		//{
-		//	var client = _httpClientFactory.CreateClient();
-		//	var jsonData = JsonConvert.SerializeObject(dto);
-		//	StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-		//	var responseMessage = await client.PostAsync("https://localhost:7095/api/Comments/CreateCommentWithMediator", content);
-		//	if (responseMessage.IsSuccessStatusCode)
-		//	{
-		//		return RedirectToAction("Index", "Default");
-		//	}
-
-		//	return View();
-		//}
-
+		[HttpPost]
 		public async Task<IActionResult> AddComment(CreateCommentDto dto)
 		{
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(dto);
 			StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
 			var responseMessage = await client.PostAsync("https://localhost:7095/api/Comments/CreateCommentWithMediator", content);
-
-			// 🔥 BURASI EKLENEN KISIM
-			var resultContent = await responseMessage.Content.ReadAsStringAsync();
-			Console.WriteLine("API Response: " + resultContent);
-			// 🔥 BURASI EKLENEN KISIM
-
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				return RedirectToAction("Index", "Default");
@@ -89,5 +69,7 @@ namespace UdemyCarBook.WebUI.Controllers
 
 			return View();
 		}
+
+
 	}
 }

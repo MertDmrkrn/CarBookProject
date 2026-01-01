@@ -16,6 +16,8 @@ namespace CarBook.Domain.Entities
 		
 		public string Description { get; set; }
 
+		public string Email { get; set; }
+
 		public int BlogID { get; set; }
 
 		public Blog Blog { get; set; }

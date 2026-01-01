@@ -17,5 +17,6 @@ namespace UdemyCarBook.Dto.CommentDtos
 		public string Description { get; set; }
 
 		public int BlogID { get; set; }
+
 	}
 }

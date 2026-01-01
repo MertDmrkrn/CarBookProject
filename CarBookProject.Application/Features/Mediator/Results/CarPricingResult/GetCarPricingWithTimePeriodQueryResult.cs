@@ -18,5 +18,6 @@ namespace CarBookProject.Application.Features.Mediator.Results.CarPricingResult
 
 		public string CoverImgUrl { get; set; }
 
+		public string Brand { get; set; }
 	}
 }
