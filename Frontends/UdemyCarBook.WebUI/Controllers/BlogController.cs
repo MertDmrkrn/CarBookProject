@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
+using System.Threading.Tasks;
 using UdemyCarBook.Dto.BlogDtos;
+using UdemyCarBook.Dto.CommentDtos;
 
 namespace UdemyCarBook.WebUI.Controllers
 {
@@ -34,6 +37,55 @@ namespace UdemyCarBook.WebUI.Controllers
 			ViewBag.v1 = "Bloglar";
 			ViewBag.v2 = "Blog Detayı ve Yorumlar";
 			ViewBag.blogid = id;
+
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage2 = await client.GetAsync($"https://localhost:7095/api/Comments/CommentCountByBlog?id=" + id);
+			var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+			ViewBag.commentCount = jsonData2;
+
+
+			return View();
+		}
+
+
+		[HttpGet]
+		public PartialViewResult AddComment()
+		{
+			return PartialView();
+		}
+
+		//[HttpPost]
+		//public async Task<IActionResult> AddComment(CreateCommentDto dto)
+		//{
+		//	var client = _httpClientFactory.CreateClient();
+		//	var jsonData = JsonConvert.SerializeObject(dto);
+		//	StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+		//	var responseMessage = await client.PostAsync("https://localhost:7095/api/Comments/CreateCommentWithMediator", content);
+		//	if (responseMessage.IsSuccessStatusCode)
+		//	{
+		//		return RedirectToAction("Index", "Default");
+		//	}
+
+		//	return View();
+		//}
+
+		public async Task<IActionResult> AddComment(CreateCommentDto dto)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var jsonData = JsonConvert.SerializeObject(dto);
+			StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+			var responseMessage = await client.PostAsync("https://localhost:7095/api/Comments/CreateCommentWithMediator", content);
+
+			// 🔥 BURASI EKLENEN KISIM
+			var resultContent = await responseMessage.Content.ReadAsStringAsync();
+			Console.WriteLine("API Response: " + resultContent);
+			// 🔥 BURASI EKLENEN KISIM
+
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index", "Default");
+			}
 
 			return View();
 		}
