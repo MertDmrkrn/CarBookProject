@@ -24,18 +24,26 @@ namespace CarBookProject.WebApi.Controllers
 			return Ok(values);
 		}
 
-		[HttpGet("CarFeatureChaneAvailableToFalse")]
-		public async Task<IActionResult> CarFeatureChaneAvailableToFalse(int id)
+		[HttpGet("CarFeatureChangeAvailableToFalse")]
+		public async Task<IActionResult> CarFeatureChangeAvailableToFalse(int id)
 		{
 			_mediator.Send(new UpdateCarFeatureAvailableChangeToFalseCommand(id));
 			return Ok("Güncelleme Yapıldı.");
 		}
 
-		[HttpGet("CarFeatureChaneAvailableToTrue")]
-		public async Task<IActionResult> CarFeatureChaneAvailableToTrue(int id)
+		[HttpGet("CarFeatureChangeAvailableToTrue")]
+		public async Task<IActionResult> CarFeatureChangeAvailableToTrue(int id)
 		{
 			_mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
 			return Ok("Güncelleme Yapıldı.");
+		}
+
+		[HttpPost("CreateCarFeatureByCarID")]
+		public async Task<IActionResult> CreateCarFeatureByCarID(CreateCarFeatureByCarCommand command)
+		{
+			_mediator.Send(command);
+			return Ok("Ekleme Yapıldı.");
+
 		}
 	}
 }

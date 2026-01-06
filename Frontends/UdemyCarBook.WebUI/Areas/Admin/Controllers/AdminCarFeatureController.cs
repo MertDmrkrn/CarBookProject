@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Text;
 using UdemyCarBook.Dto.CarFeatureDtos;
+using UdemyCarBook.Dto.FeatureDtos;
 
 namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 {
@@ -33,26 +34,43 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		[Route("Index")]
+		[Route("Index/{id}")]
 		public async Task<IActionResult> Index(List<ResultCarFeatureByIdDto> resultCarFeatureByIdDto)
 		{
+
+
 			foreach (var item in resultCarFeatureByIdDto)
 			{
 				if (item.Available)
 				{
 					var client = _httpClientFactory.CreateClient();
-					var jsonData = JsonConvert.SerializeObject(resultCarFeatureByIdDto);
-					StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-					var responseMessage = await client.PutAsync();
-					return RedirectToAction("Index", "AdminCar");
+					await client.GetAsync("https://localhost:7095/api/CarFeatures/CarFeatureChangeAvailableToTrue?id=" + item.CarFeatureID);
+
 				}
 				else
 				{
-
+					var client = _httpClientFactory.CreateClient();
+					await client.GetAsync("https://localhost:7095/api/CarFeatures/CarFeatureChangeAvailableToFalse?id=" + item.CarFeatureID);
 				}
 			}
-			return View();
+			return RedirectToAction("Index", "AdminCar");
 
 		}
+
+		[Route("CreateCarFeatureByCarId")]
+		[HttpGet]
+		public async Task<IActionResult> CreateCarFeatureByCarId()
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync("https://localhost:7095/api/Features");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);
+				return View(values);
+			}
+			return View();
+		}
+
 	}
 }

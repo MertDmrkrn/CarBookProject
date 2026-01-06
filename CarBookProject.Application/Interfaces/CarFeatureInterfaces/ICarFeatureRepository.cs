@@ -14,5 +14,7 @@ namespace CarBookProject.Application.Interfaces.CarFeatureInterfaces
 		void ChangCarFeatureAvailableToFalse(int id);
 
 		void ChangCarFeatureAvailableToTrue(int id);
+
+		void CreateCarFeatureByCar(CarFeature carFeature);
 	}
 }
