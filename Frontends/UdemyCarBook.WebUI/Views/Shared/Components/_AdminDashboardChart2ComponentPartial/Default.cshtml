@@ -1,0 +1,74 @@
+﻿<script src="~/chart.js"></script>
+
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-inline-block">Araç Marka Sayıları</h4>
+
+            <div style="height:260px;">
+                <canvas id="my2Chart"></canvas>
+            </div>
+
+            <script>
+                const ctx2 = document.getElementById('my2Chart').getContext('2d');
+
+                new Chart(ctx2, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Volkswagen','Renault','BMW','Fiat','Skoda','Mercedes'],
+                        datasets: [{
+                            label: 'Marka Grafik Listesi',
+                            data: [10, 7, 4, 12, 2, 4],
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.7)',   // Mavi
+                                'rgba(255, 99, 132, 0.7)',  // Kırmızı
+                                'rgba(255, 206, 86, 0.7)',  // Sarı
+                                'rgba(75, 192, 192, 0.7)',  // Yeşil
+                                'rgba(153, 102, 255, 0.7)', // Mor
+                                'rgba(255, 159, 64, 0.7)'   // Turuncu
+                            ],
+                            borderColor: 'white',
+                            borderWidth: 2,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#333',
+                                    font: { size: 14 }
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                padding: 10,
+                                bodyFont: { size: 14 }
+                            }
+                        },
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true
+                        }
+                    }
+                });
+            </script>
+
+
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4>39</h4>
+                    <p class="text-muted mb-0">Araç Sayısı</p>
+                </div>
+                <div class="col-6">
+                    <h4>6</h4>
+                    <p class="text-muted mb-0">Marka Sayısı</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
