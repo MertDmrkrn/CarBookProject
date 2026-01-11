@@ -21,14 +21,22 @@ namespace UdemyCarBook.WebUI.Controllers
 			ViewBag.v1 = "Araçlarımız";
 			ViewBag.v2 = "Aracınızı Seçiniz";
 
-			var client=_httpClientFactory.CreateClient();
+			var client = _httpClientFactory.CreateClient();
 			var responseMessage = await client.GetAsync("https://localhost:7095/api/CarPricings");
-			if(responseMessage.IsSuccessStatusCode)
+			if (responseMessage.IsSuccessStatusCode)
 			{
-				var jsonData=await responseMessage.Content.ReadAsStringAsync();
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
 				var values = JsonConvert.DeserializeObject<List<ResultCarPricingWithCarsDto>>(jsonData);
 				return View(values);
 			}
+			return View();
+		}
+
+		public async Task<IActionResult> CarDetail(int id)
+		{
+			ViewBag.v1 = "Araç Detayları";
+			ViewBag.v2 = "Aracın Teknik Aksesuar ve Özellikleri";
+			ViewBag.carid = id;
 			return View();
 		}
 	}
