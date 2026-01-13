@@ -59,6 +59,8 @@ namespace CarBookProject.Persistence.Context
 
 		public DbSet<Reservation> Reservations { get; set; }
 
+		public DbSet<Review> Reviews { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)//Bir tabloda birden fazla id ile ilişki kurmak için bu yapıyı kullandık
 		{
 			modelBuilder.Entity<Reservation>()
