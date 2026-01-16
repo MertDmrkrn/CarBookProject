@@ -1,5 +1,6 @@
 ﻿using CarBookProject.Application.Features.Mediator.Commands.ReviewCommands;
 using CarBookProject.Application.Features.Mediator.Queries.ReviewQuery;
+using CarBookProject.Application.Validator.ReviewValidatiors;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,13 @@ namespace CarBookProject.WebApi.Controllers
 		[HttpPost]
 		public async Task<IActionResult> CreateReview(CreateReviewCommands commands)
 		{
+			CreateReviewValidatior validator = new CreateReviewValidatior();
+			var validationResult = validator.Validate(commands);
+
+			if (!validationResult.IsValid)
+			{
+				return BadRequest(validationResult);
+			}
 			await _mediator.Send(commands);
 			return Ok("Yorum Eklendi.");
 		}

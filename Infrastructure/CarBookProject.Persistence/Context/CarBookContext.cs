@@ -15,6 +15,10 @@ namespace CarBookProject.Persistence.Context
 			optionsBuilder.UseSqlServer("Server=DESKTOP-Q80IDIO; initial Catalog=CarBookDb; integrated security=true; TrustServerCertificate=true;");
 		}
 
+		public DbSet<AppUser> AppUsers { get; set; }
+
+		public DbSet<AppRole> AppRoles { get; set; }
+
 		public DbSet<About> Abouts { get; set; }
 
 		public DbSet<Banner> Banners { get; set; }
