@@ -1,13 +1,12 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBookProject.Application.Features.Mediator.Commands.RegisterCommands
+namespace UdemyCarBook.Dto.RegisterDtos
 {
-	public class CreateAppUserCommand : IRequest
+	public class CreateRegisterDto
 	{
 		public string Username { get; set; }
 

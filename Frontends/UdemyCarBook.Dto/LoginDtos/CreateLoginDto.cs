@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UdemyCarBook.Dto.NewFolder
+namespace UdemyCarBook.Dto.LoginDtos
 {
-	public class CreateRegisterDto
+	public class CreateLoginDto
 	{
 		public string Username { get; set; }
 

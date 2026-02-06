@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
-using UdemyCarBook.Dto.NewFolder;
+using UdemyCarBook.Dto.RegisterDtos;
 
 namespace UdemyCarBook.WebUI.Controllers
 {
