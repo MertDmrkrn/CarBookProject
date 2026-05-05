@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\lib\microsoft\signalr-protocol-msgpack\**" />
+    <Content Remove="wwwroot\lib\microsoft\signalr-protocol-msgpack\**" />
+    <EmbeddedResource Remove="wwwroot\lib\microsoft\signalr-protocol-msgpack\**" />
+    <None Remove="wwwroot\lib\microsoft\signalr-protocol-msgpack\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\carbook\.DS_Store" />
     <None Include="wwwroot\carbook\css\.DS_Store" />
     <None Include="wwwroot\carbook\css\bootstrap\.DS_Store" />
@@ -33,6 +40,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\lib\microsoft\" />
   </ItemGroup>
 
 </Project>
