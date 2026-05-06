@@ -38,6 +38,7 @@ using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpClient();
 
 builder.Services.AddCors(opt =>
 {

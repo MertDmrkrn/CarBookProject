@@ -20,8 +20,17 @@
                                 $("#constatus").text(connection.state);
                                 connection.start().then(()=>{
                                     $("#constatus").text(connection.state);
+                                    setInterval(()=>{
+                                         connection.invoke("SendCarCount");
+                                    },1000);
+                                   
                                 }).catch((err) => { console.log(err) });
-                            }); 
+
+                                connection.on("ReceiveCarCount",(values)=>
+                                {
+                                    $("#carcount").text(values);
+                                })
+                            });
                         </script>
                     </div>
                 </div>
@@ -32,5 +41,8 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="alert alert-info">Bağlantının Durumu: <strong id="constatus"></strong></div>
+    </div>
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-danger">Araba Sayısı: <strong id="carcount"></strong></div>
     </div>
 </div>
